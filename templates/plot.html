@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>My page!</title>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@4"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.2.1"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@3"></script>
+    </head>
+    
+    <body>
+      <h1>This is my page</h1>
+        <div id='viz'></div>
+        <script>
+            var spec = {{ chart | safe }};
+            vegaEmbed("#viz", spec);
+        </script>
+    </body>
+</html>
