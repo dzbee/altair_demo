@@ -21,13 +21,14 @@ def count_events(user_data):
 def index():
     return 'Welcome to the Altair data viz demo.'
 
-@app.route('/plot')
-def plot():
-    chart = alt.Chart('/static/data/diam_data.json').encode(
-        x='carat:Q',
-        y='price:Q',
-        color='cut:N'
-    ).mark_point()
+@app.route('/plot/<user>')
+def plot(user):
+    user_data = get_user_events(user)
+    chart = alt.Chart(count_events(user_data)).encode(
+        x='date:T',
+        y='count:Q',
+        color='type:N'
+    ).mark_line()
 
     return render_template('plot.html',
                            chart=chart.to_json())
